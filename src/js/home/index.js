@@ -79,7 +79,7 @@ var Paper = React.createClass({
             this.setState(function () {
                 let paper = PaperContent;
                 let question = {
-                    title: "请输入标题",
+                    title: '',
                     type: type,
                     content: ['', '', '', '']
                 };
