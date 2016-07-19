@@ -3,7 +3,6 @@ var React = require('react');
 var Option = React.createClass({
     render: function() {
         let type = this.props.type;
-        console.log(type);
         return <div className={type}>
             <input type={type} checked={this.props.checked} />
             <input type="text" placeholder="选项"

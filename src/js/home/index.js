@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Header = require('./components/Header');
+var NewQuestionBar = require('./components/NewQuestionBar');
 var OptionsBar = require('./components/OptionsBar');
 
 
@@ -85,15 +86,17 @@ var Paper = React.createClass({
 
     addQuestionHandel: function(type) {
         return function() {
-            switch(type) {
-                case 'radio':
-                    this.setState(function() {
-                        let paper = PaperContent;
-                        paper.questions.push(question);
-                        return paper;
-                    });
-            }
-        }.bind(this);
+            this.setState(function () {
+                let paper = PaperContent;
+                let question = {
+                    title: "请输入标题",
+                    type: type,
+                    content: ['选项', '选项', '选项', '选项']
+                };
+                paper.questions.push(question);
+                return paper;
+            });
+        }.bind(this)
     },
 
     removeQuestionHandel: function(i) {
@@ -122,6 +125,8 @@ var Paper = React.createClass({
     render: function() {
         return <div ref="paper">
             <Header title={PaperContent.title} />
+            <NewQuestionBar addQuestion={this.addQuestionHandel}
+            />
             <section className="paper">
                 <ul className="paper-list">
                     {PaperContent.questions.map(function(question, i) {

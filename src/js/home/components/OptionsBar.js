@@ -16,10 +16,6 @@ var OptionsBar = React.createClass({
                         onClick={this.props.removeQuestion(this.props.questionId)}>
                     Remove Question
                 </button>
-                <button className="action"
-                        onClick={this.props.addQuestion('radio')}>
-                    Add Option Question
-                </button>
             </div>
             <div className="option">
                 {this.props.content.map((st, j) => {
