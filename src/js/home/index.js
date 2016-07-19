@@ -6,15 +6,15 @@ var OptionsBar = require('./components/OptionsBar');
 
 
 var PaperContent = {
-    title: "问卷",
+    title: '',
     time: "2016-7-19",
     author: "Ruiming",
     questions: [{
-        title: '问题1',
+        title: '',
         type: 'radio',
         content: ['', '', '', '']
     }, {
-        title: '问题2',
+        title: '',
         type: 'checkbox',
         content: ['','','','']
     }]
@@ -43,11 +43,22 @@ var Paper = React.createClass({
      * @returns {function(this:Paper)}
      */
     setTitleHandel: function(i, j) {
-        return function(event){
+        return function(event) {
             let value = event.target.value;
             this.setState(function(){
                 let paper = PaperContent;
                 paper.questions[i].content[j] = value;
+                return paper;
+            });
+        }.bind(this);
+    },
+
+    setPaperTitleHandel: function() {
+        return function(event) {
+            let value = event.target.value;
+            this.setState(function() {
+                let paper = PaperContent;
+                paper.title = value;
                 return paper;
             });
         }.bind(this);
@@ -103,7 +114,7 @@ var Paper = React.createClass({
 
     render: function() {
         return <div ref="paper">
-            <Header title={PaperContent.title} />
+            <Header title={PaperContent.title} setPaperTitle={this.setPaperTitleHandel} />
             <NewQuestionBar addQuestion={this.addQuestionHandel}
             />
             <section className="paper">

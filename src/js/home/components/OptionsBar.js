@@ -6,7 +6,7 @@ var OptionsBar = React.createClass({
 
     render: function() {
         return <section>
-            <Title title={this.props.title} />
+            <Title title={this.props.title} setTitle={this.props.setTitleHandel} />
             <div className="option-action">
                 <button className="action"
                         onClick={this.props.addOption(this.props.questionId)}>
