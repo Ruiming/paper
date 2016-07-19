@@ -12,12 +12,21 @@ var RadioBar = React.createClass({
                         onClick={this.props.addOption(this.props.questionId)}>
                     Add Option
                 </button>
+                <button className="action"
+                        onClick={this.props.removeQuestion(this.props.questionId)}>
+                    Remove Question
+                </button>
+                <button className="action"
+                        onClick={this.props.addQuestion('radio')}>
+                    Add Radio Question
+                </button>
             </div>
             <div className="radio">
                 {this.props.content.map((st, j) => {
                     return <Radio content={st}
                                   checked={false}
                                   setTitle={this.props.setTitle}
+                                  removeOption={this.props.removeOption}
                                   questionId={this.props.questionId}
                                   optionId={j}
                                   key={j} />;

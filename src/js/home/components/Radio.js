@@ -7,6 +7,8 @@ var Radio = React.createClass({
            <input type="text" placeholder="选项"
                   value={this.props.content}
                   onChange={this.props.setTitle(this.props.questionId, this.props.optionId)} />
+           <button className="action"
+                   onClick={this.props.removeOption(this.props.questionId, this.props.optionId)} />
            </div>
     }
 

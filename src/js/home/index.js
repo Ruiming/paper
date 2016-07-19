@@ -12,21 +12,32 @@ var PaperContent = {
         title: '问题1',
         type: 'radio',
         content: [
-            "选项1",
-            "选项2",
-            "选项3",
-            "选项4"
+            "选项",
+            "选项",
+            "选项",
+            "选项"
         ]
     }, {
         title: '问题2',
         type: 'radio',
         content: [
-            "选项1",
-            "选项2",
-            "选项3",
-            "选项4"
+            "选项",
+            "选项",
+            "选项",
+            "选项"
         ]
     }]
+};
+
+var question = {
+    title: '问题标题',
+    type: 'radio',
+    content: [
+        "选项",
+        "选项",
+        "选项",
+        "选项"
+    ]
 };
 
 /**
@@ -66,10 +77,43 @@ var Paper = React.createClass({
         return function() {
             this.setState(function() {
                 let paper = PaperContent;
-                let count = paper.questions[i].content.length;
-                paper.questions[i].content.push(`选项${count+1}`);
+                paper.questions[i].content.push(`选项`);
                 return paper;
             })
+        }.bind(this);
+    },
+
+    addQuestionHandel: function(type) {
+        return function() {
+            switch(type) {
+                case 'radio':
+                    this.setState(function() {
+                        let paper = PaperContent;
+                        paper.questions.push(question);
+                        console.log(paper);
+                        return paper;
+                    });
+            }
+        }.bind(this);
+    },
+
+    removeQuestionHandel: function(i) {
+        return function() {
+            this.setState(function() {
+                let paper = PaperContent;
+                paper.questions.splice(i, 1);
+                return paper;
+            })
+        }.bind(this);
+    },
+
+    removeOptionHandel: function(i, j) {
+        return function() {
+            this.setState(function() {
+                let paper = PaperContent;
+                paper.questions[i].content.splice(j, 1);
+                return paper;
+            });
         }.bind(this);
     },
 
@@ -86,6 +130,9 @@ var Paper = React.createClass({
                                                  questionId={i}
                                                  key={i}
                                                  setTitle={this.setTitleHandel}
+                                                 removeQuestion={this.removeQuestionHandel}
+                                                 addQuestion={this.addQuestionHandel}
+                                                 removeOption={this.removeOptionHandel}
                                                  addOption={this.addOptionHandel} />
                         }
                     }.bind(this))}
