@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 var CommonsChunkPlugin =require("webpack/lib/optimize/CommonsChunkPlugin");
 var HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
 module.exports = {
@@ -15,9 +16,9 @@ module.exports = {
         ]
     },
     output: {
-        path: './dist/',
+        path: './dist',
         filename: 'bundle.js',
-        publicPath: './dist/'
+        publicPath: '/dist'
     },
     module: {
         loaders: [{
@@ -34,7 +35,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js", Infinity),
+        new CommonsChunkPlugin(
+            /* chunkName= */"vendor",
+            /* filename= */"vendor.bundle.js",
+            Infinity),
         new HotModuleReplacementPlugin()
     ],
     devServer: {

@@ -40,12 +40,36 @@ var Paper = React.createClass({
         }
     },
 
+    _outputState: function() {
+        console.log(PaperContent);
+    },
+
+    /**
+     *
+     * 更改选项标题
+     * @param i 问题号
+     * @param j 选项号
+     * @returns {function(this:Paper)}
+     */
     setTitleHandel: function(i, j) {
-        return function(hash, event){
+        return function(event){
+            let value = event.target.value;
             this.setState(function(){
-                console.log(event, hash, i, j);
-                return PaperContent;
+                let paper = PaperContent;
+                paper.questions[i].content[j] = value;
+                return paper;
             });
+        }.bind(this);
+    },
+
+    addOptionHandel: function(i) {
+        return function() {
+            this.setState(function() {
+                let paper = PaperContent;
+                let count = paper.questions[i].content.length;
+                paper.questions[i].content.push(`选项${count+1}`);
+                return paper;
+            })
         }.bind(this);
     },
 
@@ -61,7 +85,8 @@ var Paper = React.createClass({
                                                  title={question.title}
                                                  questionId={i}
                                                  key={i}
-                                                 setTitle={this.setTitleHandel} />
+                                                 setTitle={this.setTitleHandel}
+                                                 addOption={this.addOptionHandel} />
                         }
                     }.bind(this))}
                 </ul>

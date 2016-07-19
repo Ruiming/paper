@@ -52,8 +52,11 @@ webpackJsonp([0],{
 
 	    setTitleHandel: function setTitleHandel(i, j) {
 	        return function (hash, event) {
+	            var text = this.refs['paper'];
+	            console.log(text);
+
 	            this.setState(function () {
-	                console.log(event, hash, i, j);
+	                console.log(event, hash);
 	                return PaperContent;
 	            });
 	        }.bind(this);
@@ -216,7 +219,7 @@ webpackJsonp([0],{
 	            "div",
 	            { className: "radio" },
 	            React.createElement("input", { type: "radio", checked: this.props.checked }),
-	            React.createElement("input", { type: "text", placeholder: "选项",
+	            React.createElement("input", { type: "text", placeholder: "选项", ref: "title",
 	                value: this.props.content,
 	                onChange: this.props.setTitle(this.props.questionId, this.props.optionId) })
 	        );
