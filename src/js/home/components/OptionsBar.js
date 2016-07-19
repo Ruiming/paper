@@ -21,6 +21,7 @@ var OptionsBar = React.createClass({
                 {this.props.content.map((st, j) => {
                     return <Option content={st}
                                    type={this.props.type}
+                                   holder={`选项${j+1}`}
                                    checked={false}
                                    setTitle={this.props.setTitle}
                                    removeOption={this.props.removeOption}

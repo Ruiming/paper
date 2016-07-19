@@ -12,33 +12,12 @@ var PaperContent = {
     questions: [{
         title: '问题1',
         type: 'radio',
-        content: [
-            "选项",
-            "选项",
-            "选项",
-            "选项"
-        ]
+        content: ['', '', '', '']
     }, {
         title: '问题2',
         type: 'checkbox',
-        content: [
-            "选项",
-            "选项",
-            "选项",
-            "选项"
-        ]
+        content: ['','','','']
     }]
-};
-
-var question = {
-    title: '问题标题',
-    type: 'radio',
-    content: [
-        "选项",
-        "选项",
-        "选项",
-        "选项"
-    ]
 };
 
 /**
@@ -78,7 +57,7 @@ var Paper = React.createClass({
         return function() {
             this.setState(function() {
                 let paper = PaperContent;
-                paper.questions[i].content.push(`选项`);
+                paper.questions[i].content.push('');
                 return paper;
             })
         }.bind(this);
@@ -91,7 +70,7 @@ var Paper = React.createClass({
                 let question = {
                     title: "请输入标题",
                     type: type,
-                    content: ['选项', '选项', '选项', '选项']
+                    content: ['', '', '', '']
                 };
                 paper.questions.push(question);
                 return paper;

@@ -5,7 +5,7 @@ var Option = React.createClass({
         let type = this.props.type;
         return <div className={type}>
             <input type={type} checked={this.props.checked} />
-            <input type="text" placeholder="选项"
+            <input type="text" placeholder={this.props.holder}
                   value={this.props.content}
                   onChange={this.props.setTitle(this.props.questionId, this.props.optionId)} />
             <button className="action"
