@@ -1,8 +1,8 @@
 var React = require('react');
 var Title = require('./Title');
-var Radio = require('./Radio');
+var Option = require('./Option');
 
-var RadioBar = React.createClass({
+var OptionsBar = React.createClass({
 
     render: function() {
         return <section>
@@ -18,22 +18,23 @@ var RadioBar = React.createClass({
                 </button>
                 <button className="action"
                         onClick={this.props.addQuestion('radio')}>
-                    Add Radio Question
+                    Add Option Question
                 </button>
             </div>
-            <div className="radio">
+            <div className="option">
                 {this.props.content.map((st, j) => {
-                    return <Radio content={st}
-                                  checked={false}
-                                  setTitle={this.props.setTitle}
-                                  removeOption={this.props.removeOption}
-                                  questionId={this.props.questionId}
-                                  optionId={j}
-                                  key={j} />;
+                    return <Option content={st}
+                                   type={this.props.type}
+                                   checked={false}
+                                   setTitle={this.props.setTitle}
+                                   removeOption={this.props.removeOption}
+                                   questionId={this.props.questionId}
+                                   optionId={j}
+                                   key={j} />;
                 })}
             </div>
         </section>
     }
 });
 
-module.exports = RadioBar;
+module.exports = OptionsBar;

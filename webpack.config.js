@@ -6,8 +6,8 @@ module.exports = {
         index: [
             './src/js/home/index.js',
             './src/js/home/components/Header.js',
-            './src/js/home/components/Radio.js',
-            './src/js/home/components/RadioBar.js',
+            './src/js/home/components/Option.js',
+            './src/js/home/components/OptionsBar.js',
             './src/js/home/components/Title.js',
         ],
         vendor: [

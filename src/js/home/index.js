@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Header = require('./components/Header');
-var RadioBar = require('./components/RadioBar');
+var OptionsBar = require('./components/OptionsBar');
 
 
 var PaperContent = {
@@ -19,7 +19,7 @@ var PaperContent = {
         ]
     }, {
         title: '问题2',
-        type: 'radio',
+        type: 'checkbox',
         content: [
             "选项",
             "选项",
@@ -90,7 +90,6 @@ var Paper = React.createClass({
                     this.setState(function() {
                         let paper = PaperContent;
                         paper.questions.push(question);
-                        console.log(paper);
                         return paper;
                     });
             }
@@ -112,6 +111,9 @@ var Paper = React.createClass({
             this.setState(function() {
                 let paper = PaperContent;
                 paper.questions[i].content.splice(j, 1);
+                if(paper.questions[i].content.length == 0) {
+                    paper.questions.splice(i, 1);
+                }
                 return paper;
             });
         }.bind(this);
@@ -123,19 +125,18 @@ var Paper = React.createClass({
             <section className="paper">
                 <ul className="paper-list">
                     {PaperContent.questions.map(function(question, i) {
-                        switch(question.type) {
-                            case 'radio':
-                                return <RadioBar content={question.content}
-                                                 title={question.title}
-                                                 questionId={i}
-                                                 key={i}
-                                                 setTitle={this.setTitleHandel}
-                                                 removeQuestion={this.removeQuestionHandel}
-                                                 addQuestion={this.addQuestionHandel}
-                                                 removeOption={this.removeOptionHandel}
-                                                 addOption={this.addOptionHandel} />
-                        }
-                    }.bind(this))}
+                        return <OptionsBar content={question.content}
+                                           title={question.title}
+                                           questionId={i}
+                                           key={i}
+                                           type={question.type}
+                                           setTitle={this.setTitleHandel}
+                                           removeQuestion={this.removeQuestionHandel}
+                                           addQuestion={this.addQuestionHandel}
+                                           removeOption={this.removeOptionHandel}
+                                           addOption={this.addOptionHandel} />
+                        }.bind(this))
+                    }
                 </ul>
             </section>
             </div>
