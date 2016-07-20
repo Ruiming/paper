@@ -4,6 +4,16 @@ var Header = require('./components/Header');
 var NewQuestionBar = require('./components/NewQuestionBar');
 var OptionsBar = require('./components/OptionsBar');
 
+import { createStore } from 'redux'
+import paperApp from './reducer/reducer'
+import { addQuestion } from './action/action'
+
+let store = createStore(paperApp);
+//console.log(store.getState());
+//let unsubscribe = store.subscribe(() => console.log(store.getState()));
+//store.dispatch(addQuestion());
+//unsubscribe();
+// todo 使用redux
 
 var PaperContent = {
     title: '',
