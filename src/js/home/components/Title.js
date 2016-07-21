@@ -1,7 +1,7 @@
-var React = require('react');
+import React, { Component, PropTypes } from 'react'
 
-var Title = React.createClass({
-    render: function() {
+class Title extends Component {
+    render() {
         return <div ref="title" className="title">
                 <input type="text" placeholder="请输入标题"
                        value={this.props.title}
@@ -9,6 +9,6 @@ var Title = React.createClass({
             </div>
     }
 
-});
+}
 
 module.exports = Title;

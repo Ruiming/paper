@@ -1,4 +1,5 @@
-import { ADD_QUESTION, ADD_OPTION, SET_PAPER_TITLE, SET_QUESTION_TITLE, REMOVE_OPTION, REMOVE_QUESTION } from '../action/action'
+import { ADD_QUESTION, ADD_OPTION, SET_PAPER_TITLE, SET_QUESTION_TITLE, SET_OPTION_TITLE,
+         REMOVE_OPTION, REMOVE_QUESTION } from '../action/action'
 import { combineReducers } from 'redux'
 
 const initialState = {
@@ -24,15 +25,19 @@ function questionsReducer(state=initialState.questions, action) {
                 ...state,
                 {
                     title: '',
-                    type: 'checkbox',
+                    type: action.questionType,
                     content: ['','','','']
                 }
             ];
         case REMOVE_QUESTION:
-            return state;
+            return [
+                ...state.slice(0, action.questionId),
+                ...state.slice(action.questionId+1)
+            ];
         case ADD_OPTION:
         case REMOVE_OPTION:
         case SET_QUESTION_TITLE:
+        case SET_OPTION_TITLE:
             return [
                 ...state.slice(0, action.questionId),
                 questionReducer(state[action.questionId], action),
@@ -59,13 +64,13 @@ function questionReducer(state=[], action) {
             paper.content.push('');
             return paper;
         case REMOVE_OPTION:
-            paper.questions[action.questionId].content.splice(action.optionId, 1);
-            if(paper.questions[i].content.length === 0) {
-                paper.questions.splice(action.questionId, 1);
-            }
+            paper.content.splice(action.optionId, 1);
             return paper;
         case SET_QUESTION_TITLE:
-            paper.questions[action.questionId].title = action.value;
+            paper.title = action.value;
+            return paper;
+        case SET_OPTION_TITLE:
+            paper.content[action.optionId] = action.value;
             return paper;
         default:
             return state;

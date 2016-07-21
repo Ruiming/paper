@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { addQuestion, addOption, setPaperTitle, setQuestionTitle, removeOption, removeQuestion } from '../action/action'
+import { addQuestion, addOption, setPaperTitle, setQuestionTitle, setOptionTitle, removeQuestion, removeOption } from '../action/action'
 var Header = require('../components/Header');
 var NewQuestionBar = require('../components/NewQuestionBar');
 var OptionsBar = require('../components/OptionsBar');
 
 class App extends Component {
     render() {
-        console.log(this.props);
         const { dispatch, title, questions } = this.props;
         return <div ref="paper">
             <Header title={title}
@@ -22,7 +21,8 @@ class App extends Component {
                                            questionId={i}
                                            key={i}
                                            type={question.type}
-                                           setTitle={(questionId) => dispatch(setQuestionTitle(questionId))}
+                                           setOptionTitle={(questionId, optionId, newTitle) => dispatch(setOptionTitle(questionId, optionId, newTitle))}
+                                           setQuestionTitle={(questionId, newTitle) => dispatch(setQuestionTitle(questionId, newTitle))}
                                            removeQuestion={(questionId) => dispatch(removeQuestion(questionId))}
                                            addQuestion={() => dispatch(addQuestion())}
                                            removeOption={(questionId, optionId) => dispatch(removeOption(questionId, optionId))}

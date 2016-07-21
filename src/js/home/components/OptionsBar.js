@@ -1,12 +1,11 @@
-var React = require('react');
+import React, { Component, PropTypes } from 'react'
 var Title = require('./Title');
 var Option = require('./Option');
 
-var OptionsBar = React.createClass({
-
-    render: function() {
+class OptionsBar extends Component{
+    render() {
         return <section>
-            <Title title={this.props.title} //setTitle={this.props.setTitleHandel}
+            <Title title={this.props.title} setTitle={(event) => this.setQuestionTitle(event)}
             />
             <div className="option-action">
                 <button className="action"
@@ -15,7 +14,7 @@ var OptionsBar = React.createClass({
                     Add Option
                 </button>
                 <button className="action"
-                        //onClick={this.props.removeQuestion(this.props.questionId)}
+                        onClick={() => this.props.removeQuestion(this.props.questionId)}
                     >
                     Remove Question
                 </button>
@@ -26,8 +25,9 @@ var OptionsBar = React.createClass({
                                    type={this.props.type}
                                    holder={`选项${j+1}`}
                                    checked={false}
-                                   //setTitle={this.props.setTitle}
-                                   //removeOption={this.props.removeOption}
+                                   setOptionTitle={this.props.setOptionTitle}
+                                   setQuestionTitle={this.props.setQuestionTitle}
+                                   removeOption={this.props.removeOption}
                                    questionId={this.props.questionId}
                                    optionId={j}
                                    key={j} />;
@@ -35,6 +35,11 @@ var OptionsBar = React.createClass({
             </div>
         </section>
     }
-});
+
+    setQuestionTitle(e) {
+        let value = e.target.value;
+        this.props.setQuestionTitle(this.props.questionId, value);
+    }
+}
 
 module.exports = OptionsBar;

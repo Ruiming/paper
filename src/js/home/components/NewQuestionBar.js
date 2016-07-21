@@ -16,15 +16,11 @@ export default class NewQuestionBar extends Component {
             <ul className="questions">
                 {this.state.type.map(function(type, i) {
                     return <li key={i}>
-                                <a href='javascript:;' onClick={() => this.handelClick(type.text)} >{type.name}</a>
+                                <a href='javascript:;' onClick={() => this.props.addQuestion(type.text)} >{type.name}</a>
                         </li>;
                 }.bind(this))}
             </ul>
         </div>
-    }
-
-    handelClick(type) {
-        this.props.addQuestion(type);
     }
 
 }
