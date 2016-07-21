@@ -1,16 +1,20 @@
-var React = require('react');
+import React, { Component, PropTypes } from 'react'
 
-var Header = React.createClass({
-
-    render: function() {
+class Header extends Component{
+    render() {
         return <div>
             <header className="header">
-                <input className="paper-title" placeholder="请输入问卷标题"
+                <input type="text" className="paper-title" placeholder="请输入问卷标题"
                        value={this.props.title}
-                       onChange={this.props.setPaperTitle()} />
+                       onChange={(e) => this.setTitle(e)}
+                />
             </header>
         </div>
     }
-});
+
+    setTitle(e) {
+        this.props.setPaperTitle(e.target.value);
+    }
+}
 
 module.exports = Header;

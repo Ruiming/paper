@@ -6,14 +6,17 @@ var OptionsBar = React.createClass({
 
     render: function() {
         return <section>
-            <Title title={this.props.title} setTitle={this.props.setTitleHandel} />
+            <Title title={this.props.title} //setTitle={this.props.setTitleHandel}
+            />
             <div className="option-action">
                 <button className="action"
-                        onClick={this.props.addOption(this.props.questionId)}>
+                        onClick={() => this.props.addOption(this.props.questionId)}
+                    >
                     Add Option
                 </button>
                 <button className="action"
-                        onClick={this.props.removeQuestion(this.props.questionId)}>
+                        //onClick={this.props.removeQuestion(this.props.questionId)}
+                    >
                     Remove Question
                 </button>
             </div>
@@ -23,8 +26,8 @@ var OptionsBar = React.createClass({
                                    type={this.props.type}
                                    holder={`选项${j+1}`}
                                    checked={false}
-                                   setTitle={this.props.setTitle}
-                                   removeOption={this.props.removeOption}
+                                   //setTitle={this.props.setTitle}
+                                   //removeOption={this.props.removeOption}
                                    questionId={this.props.questionId}
                                    optionId={j}
                                    key={j} />;

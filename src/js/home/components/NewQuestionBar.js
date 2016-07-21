@@ -1,27 +1,32 @@
-var React = require('react');
+import React, { Component, PropTypes } from 'react'
 
-var NewQuestionBar = React.createClass({
-    getInitialState: function() {
-        return {
+export default class NewQuestionBar extends Component {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
             type: [
                 {text: 'radio', name: '单选题'},
                 {text: 'checkbox', name: '多选题', limit: 0},
             ]
-        }
-    },
+        };
+    }
 
-    render: function() {
+    render() {
         return <div className="question-center">
             <ul className="questions">
                 {this.state.type.map(function(type, i) {
-                    return <li key={i}><a href='javascript:;'
-                                  onClick={this.props.addQuestion(type.text)}>
-                                {type.name}
-                    </a></li>;
+                    return <li key={i}>
+                                <a href='javascript:;' onClick={() => this.handelClick(type.text)} >{type.name}</a>
+                        </li>;
                 }.bind(this))}
             </ul>
         </div>
     }
-});
+
+    handelClick(type) {
+        this.props.addQuestion(type);
+    }
+
+}
 
 module.exports = NewQuestionBar;
