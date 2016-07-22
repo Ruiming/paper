@@ -12,7 +12,9 @@ module.exports = {
         ],
         vendor: [
             'react',
-            'react-dom'
+            'react-dom',
+            'redux',
+            'react-redux'
         ]
     },
     output: {
