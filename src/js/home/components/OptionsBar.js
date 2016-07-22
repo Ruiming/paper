@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-var Title = require('./Title');
-var Option = require('./Option');
+import Title from './Title'
+import Option from './Option'
 
 class OptionsBar extends Component{
     render() {

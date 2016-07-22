@@ -2,23 +2,7 @@ import { ADD_QUESTION, ADD_OPTION, SET_PAPER_TITLE, SET_QUESTION_TITLE, SET_OPTI
          REMOVE_OPTION, REMOVE_QUESTION } from '../action/action'
 import { combineReducers } from 'redux'
 
-const initialState = {
-    paper: {
-        title: 'asd',
-        time: "2016-7-19",
-        author: "Ruiming",
-    },
-    questions: [{
-        title: '',
-        type: 'radio',
-        content: ['', '', '', '']
-    }, {
-        title: '',
-        type: 'checkbox',
-        content: ['','','','']
-    }]
-};
-function questionsReducer(state=initialState.questions, action) {
+function questionsReducer(state=[], action) {
     switch(action.type) {
         case ADD_QUESTION:
             return [
@@ -47,7 +31,7 @@ function questionsReducer(state=initialState.questions, action) {
             return state;
     }
 }
-function paperReducer(state=initialState.paper, action) {
+function paperReducer(state=[], action) {
     switch(action.type) {
         case SET_PAPER_TITLE:
             return Object.assign({}, state, {

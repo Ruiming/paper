@@ -34,7 +34,6 @@ export function setOptionTitle(questionId, optionId, newTitle) {
     }
 }
 export function addOption(questionId) {
-    console.log(questionId);
     return {
         type: ADD_OPTION,
         questionId: questionId

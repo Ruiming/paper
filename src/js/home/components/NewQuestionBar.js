@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
-export default class NewQuestionBar extends Component {
+class NewQuestionBar extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
