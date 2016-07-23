@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { addQuestion, addOption, setPaperTitle, setQuestionTitle, setOptionTitle, removeQuestion, removeOption } from '../action/action'
-var Header = require('../components/Header');
-var NewQuestionBar = require('../components/NewQuestionBar');
-var OptionsBar = require('../components/OptionsBar');
+import Header from '../components/Header'
+import NewQuestionBar from '../components/NewQuestionBar'
+import OptionsBar from '../components/OptionsBar'
 
 class App extends Component {
     render() {
