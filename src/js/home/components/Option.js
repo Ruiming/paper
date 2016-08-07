@@ -8,7 +8,7 @@ class Option extends Component{
     render() {
         let type = this.props.type;
         return <div className="input-group">
-            <span className="input-group-btn">
+            <span className="input-group-addon">
                 <input type={type} checked={this.props.checked} />
             </span>
             <input type="text" className="form-control" placeholder={this.props.holder}

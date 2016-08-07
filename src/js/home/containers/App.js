@@ -9,11 +9,14 @@ class App extends Component {
     render() {
         const { dispatch, title, questions } = this.props;
         return <div ref="paper" className="container">
+            <div className="page-header">
+                <h1>问卷发布系统</h1>
+            </div>
             <Header title={title}
                     setPaperTitle={(title) => dispatch(setPaperTitle(title))} />
-            <NewQuestionBar addQuestion={(type) => dispatch(addQuestion(type))} />
-            <section className="paper">
-                <ul className="paper-list">
+            <NewQuestionBar row="2" addQuestion={(type) => dispatch(addQuestion(type))} />
+            <div className="col-md-10">
+                <ul className="list-group">
                     {questions.map(function(question, i) {
                         return <OptionsBar content={question.content}
                                            title={question.title}
@@ -30,7 +33,7 @@ class App extends Component {
                     }.bind(this))
                     }
                 </ul>
-            </section>
+            </div>
         </div>
     }
 }

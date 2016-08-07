@@ -34,7 +34,7 @@ module.exports = {
                 }
             }, {
                 test: /\.css$/,
-                loader: "style-loader!css-loader"
+                loader: "style-loader!css-loader?modules"
             }, {
                 test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,
                 loader: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[ext]'

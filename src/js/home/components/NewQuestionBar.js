@@ -5,6 +5,7 @@ import React, { Component, PropTypes } from 'react'
  */
 
 class NewQuestionBar extends Component {
+
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -16,13 +17,14 @@ class NewQuestionBar extends Component {
     }
 
     render() {
-        return  <ul className="questions form-inline">
+        return  <div className="btn-group-vertical col-md-2">
                 {this.state.type.map(function(type, i) {
-                    return <li key={i}>
-                                <a href='javascript:;' onClick={() => this.props.addQuestion(type.text)} >{type.name}</a>
-                        </li>;
+                    return  <a href='javascript:;' className="btn btn-default" key={i}
+                           onClick={() => this.props.addQuestion(type.text)} >
+                            {type.name}
+                        </a>;
                 }.bind(this))}
-            </ul>
+            </div>
     }
 
 }

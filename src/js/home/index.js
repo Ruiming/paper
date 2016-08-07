@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import paperApp from './reducer/reducer'
 import App from './containers/App'
 import 'bootstrap/dist/css/bootstrap.css'
+import './home.css'
 
 const initialState = {
     paper: {
