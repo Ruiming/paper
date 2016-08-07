@@ -33,10 +33,11 @@ export function setOptionTitle(questionId, optionId, newTitle) {
         value: newTitle
     }
 }
-export function addOption(questionId) {
+export function addOption(questionId, optionType) {
     return {
         type: ADD_OPTION,
-        questionId: questionId
+        questionId: questionId,
+        optionType: optionType
     }
 }
 export function removeQuestion(questionId) {
