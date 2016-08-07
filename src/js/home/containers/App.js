@@ -8,10 +8,9 @@ import OptionsBar from '../components/OptionsBar'
 class App extends Component {
     render() {
         const { dispatch, title, questions } = this.props;
-        return <div ref="paper">
+        return <div ref="paper" className="container">
             <Header title={title}
-                    setPaperTitle={(title) => dispatch(setPaperTitle(title))}
-                />
+                    setPaperTitle={(title) => dispatch(setPaperTitle(title))} />
             <NewQuestionBar addQuestion={(type) => dispatch(addQuestion(type))} />
             <section className="paper">
                 <ul className="paper-list">

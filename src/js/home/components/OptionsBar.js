@@ -12,25 +12,26 @@ class OptionsBar extends Component{
     }
 
     render() {
-        return <section>
-            <div ref="title" className="title">
+        return <section className="row">
+            <div ref="title" className="title form-group col-xs-12">
                 <input type="text" placeholder="请输入标题"
+                       className="form-control"
                        value={this.props.title}
                        onChange={(event) => this.setQuestionTitle(event)}/>
             </div>
-            <div className="option-action">
-                <button className="action"
+            <div className="option-action btn-group-vertical col-xs-4">
+                <button className="btn btn-default"
                         onClick={() => this.props.addOption(this.props.questionId)}
                     >
                     Add Option
                 </button>
-                <button className="action"
+                <button className="btn btn-default"
                         onClick={() => this.props.removeQuestion(this.props.questionId)}
                     >
                     Remove Question
                 </button>
             </div>
-            <div className="option">
+            <div className="option col-xs-8">
                 {this.props.content.map((st, j) => {
                     return <Option content={st}
                                    type={this.props.type}

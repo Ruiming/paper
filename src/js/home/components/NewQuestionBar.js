@@ -16,15 +16,13 @@ class NewQuestionBar extends Component {
     }
 
     render() {
-        return <div className="question-center">
-            <ul className="questions">
+        return  <ul className="questions form-inline">
                 {this.state.type.map(function(type, i) {
                     return <li key={i}>
                                 <a href='javascript:;' onClick={() => this.props.addQuestion(type.text)} >{type.name}</a>
                         </li>;
                 }.bind(this))}
             </ul>
-        </div>
     }
 
 }

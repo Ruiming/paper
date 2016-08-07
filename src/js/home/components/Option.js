@@ -7,16 +7,20 @@ import React, { Component, PropTypes } from 'react'
 class Option extends Component{
     render() {
         let type = this.props.type;
-        return <div className={type}>
-            <input type={type} checked={this.props.checked} />
-            <input type="text" placeholder={this.props.holder}
+        return <div className="input-group">
+            <span className="input-group-btn">
+                <input type={type} checked={this.props.checked} />
+            </span>
+            <input type="text" className="form-control" placeholder={this.props.holder}
                   value={this.props.content}
                   onChange={(event) => this.setOptionTitle(event)}
             />
-            <button className="action"
-                   onClick={() => this.props.removeOption(this.props.questionId, this.props.optionId)}
-            />
-            </div>
+            <span className="input-group-btn">
+                <button className="btn btn-default" type="button"
+                        onClick={() => this.props.removeOption(this.props.questionId, this.props.optionId)}
+                > Delete </button>
+            </span>
+        </div>
     }
 
     setOptionTitle(e) {
