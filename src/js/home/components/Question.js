@@ -47,7 +47,7 @@ class OptionsBar extends Component{
             </div>
             {(() => {
                 if(this.props.type === 'checkbox') {
-                return <div className="option-action form-horizontal col-xs-2">
+                    return <div className="option-action form-horizontal col-xs-2">
                     <div className="form-inline">
                         <label htmlFor="number">最多选:&nbsp;&nbsp;</label>
                         <input type="number" id="number" className="form-control"

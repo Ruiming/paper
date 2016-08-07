@@ -7,7 +7,7 @@ module.exports = {
             './src/js/home/index.js',
             './src/js/home/components/Header.js',
             './src/js/home/components/Option.js',
-            './src/js/home/components/OptionsBar.js',
+            './src/js/home/components/Question.js',
         ],
         vendor: [
             'react',
@@ -35,7 +35,8 @@ module.exports = {
                 }
             }, {
                 test: /\.css$/,
-                loader: "style-loader!css-loader?modules"
+                // TODO: ?modules
+                loader: "style-loader!css-loader"
             }, {
                 test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,
                 loader: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[ext]'

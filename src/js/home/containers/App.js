@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addQuestion, addOption, modifyQuestion, setPaperTitle, setQuestionTitle, setOptionTitle, removeQuestion, removeOption } from '../action/action'
 import Header from '../components/Header'
 import NewQuestionBar from '../components/NewQuestionBar'
-import OptionsBar from '../components/OptionsBar'
+import Question from '../components/Question'
 
 class App extends Component {
     render() {
@@ -19,7 +19,7 @@ class App extends Component {
                 <div className="col-md-10">
                     <ul className="list-group">
                         {questions.map(function(question, i) {
-                            return <OptionsBar question={question}
+                            return <Question question={question}
                                                questionId={i}
                                                key={i}
                                                type={question.type}
