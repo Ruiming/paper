@@ -12,14 +12,14 @@ class OptionsBar extends Component{
     }
 
     render() {
-        return <li className="list-group-item row">
-            <div ref="title" className="title form-group col-xs-12">
+        return <li className="list-group-item row question">
+            <div ref="title" className="title col-xs-12">
                 <input type="text" placeholder="请输入标题"
                        className="form-control"
                        value={this.props.title}
                        onChange={(event) => this.setQuestionTitle(event)}/>
             </div>
-            <div className="col-xs-10 form-group">
+            <div className="col-xs-10">
                 {this.props.content.map((st, j) => {
                     return <Option content={st}
                                    type={this.props.type}
