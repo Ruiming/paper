@@ -4,6 +4,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import paperApp from './reducer/reducer'
 import App from './containers/App'
+import 'bootstrap/dist/css/bootstrap.css'
 
 const initialState = {
     paper: {
@@ -21,11 +22,7 @@ const initialState = {
         content: ['','','','']
     }]
 };
-/**
- * redux主要围绕store进行，只能有一个store，但作为reducer的paperApp可以合并多个reducer
- * 每个reducer控制store不同部分,
- * createStore传入两个参数，分别是reducer和初始对象，初始对象应该和reducer匹配
- */
+
 let store = createStore(paperApp, initialState);
 let rootElement = document.getElementById('index');
 render (

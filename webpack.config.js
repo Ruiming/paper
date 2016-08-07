@@ -13,7 +13,9 @@ module.exports = {
             'react',
             'react-dom',
             'redux',
-            'react-redux'
+            'react-redux',
+            'jquery',
+            'bootstrap'
         ]
     },
     output: {
@@ -33,6 +35,9 @@ module.exports = {
             }, {
                 test: /\.css$/,
                 loader: "style-loader!css-loader"
+            }, {
+                test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,
+                loader: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[ext]'
             }
         ]
     },
