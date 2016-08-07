@@ -22,6 +22,9 @@ function questionsReducer(state=[], action) {
             _.map(action.options, (value, key)=>{
                 paper[action.questionId][key] = value;
             });
+            if(paper[action.questionId]['max'] < paper[action.questionId]['min']) {
+                paper[action.questionId]['min'] = paper[action.questionId]['max'];
+            }
             return paper;
         case ADD_OPTION:
         case REMOVE_OPTION:

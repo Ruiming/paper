@@ -62,7 +62,7 @@ class OptionsBar extends Component{
                         <input type="number" id="number" className="form-control"
                                value={this.props.question.min || 2}
                                min="2"
-                               max={this.props.question.content.length}
+                               max={this.props.question.max || this.props.question.content.length}
                                onChange={(event, key)=>this.modifyCheckboxMax(event, 'min')}
                         />
                     </div>
