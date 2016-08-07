@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { addQuestion, addOption, setPaperTitle, setQuestionTitle, setOptionTitle, removeQuestion, removeOption } from '../action/action'
+import { addQuestion, addOption, modifyQuestion, setPaperTitle, setQuestionTitle, setOptionTitle, removeQuestion, removeOption } from '../action/action'
 import Header from '../components/Header'
 import NewQuestionBar from '../components/NewQuestionBar'
 import OptionsBar from '../components/OptionsBar'
@@ -14,25 +14,27 @@ class App extends Component {
             </div>
             <Header title={title}
                     setPaperTitle={(title) => dispatch(setPaperTitle(title))} />
-            <NewQuestionBar row="2" addQuestion={(type) => dispatch(addQuestion(type))} />
-            <div className="col-md-10">
-                <ul className="list-group">
-                    {questions.map(function(question, i) {
-                        return <OptionsBar content={question.content}
-                                           title={question.title}
-                                           questionId={i}
-                                           key={i}
-                                           type={question.type}
-                                           setOptionTitle={(questionId, optionId, newTitle) => dispatch(setOptionTitle(questionId, optionId, newTitle))}
-                                           setQuestionTitle={(questionId, newTitle) => dispatch(setQuestionTitle(questionId, newTitle))}
-                                           removeQuestion={(questionId) => dispatch(removeQuestion(questionId))}
-                                           addQuestion={() => dispatch(addQuestion())}
-                                           removeOption={(questionId, optionId) => dispatch(removeOption(questionId, optionId))}
-                                           addOption={(questionId) => dispatch(addOption(questionId))}
-                        />
-                    }.bind(this))
-                    }
-                </ul>
+            <div className="row">
+                <NewQuestionBar row="2" addQuestion={(type) => dispatch(addQuestion(type))} />
+                <div className="col-md-10">
+                    <ul className="list-group">
+                        {questions.map(function(question, i) {
+                            return <OptionsBar question={question}
+                                               questionId={i}
+                                               key={i}
+                                               type={question.type}
+                                               setOptionTitle={(questionId, optionId, newTitle) => dispatch(setOptionTitle(questionId, optionId, newTitle))}
+                                               setQuestionTitle={(questionId, newTitle) => dispatch(setQuestionTitle(questionId, newTitle))}
+                                               removeQuestion={(questionId) => dispatch(removeQuestion(questionId))}
+                                               addQuestion={() => dispatch(addQuestion())}
+                                               removeOption={(questionId, optionId) => dispatch(removeOption(questionId, optionId))}
+                                               addOption={(questionId) => dispatch(addOption(questionId))}
+                                               modifyQuestion={(questionId, options) => dispatch(modifyQuestion(questionId, options))}
+                            />
+                        }.bind(this))
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
     }
