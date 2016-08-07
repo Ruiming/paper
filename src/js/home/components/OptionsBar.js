@@ -1,12 +1,23 @@
 import React, { Component, PropTypes } from 'react'
-import Title from './Title'
 import Option from './Option'
 
+/**
+ * 题目栏
+ */
 class OptionsBar extends Component{
+
+    setQuestionTitle(e) {
+        let value = e.target.value;
+        this.props.setQuestionTitle(this.props.questionId, value);
+    }
+
     render() {
         return <section>
-            <Title title={this.props.title} setTitle={(event) => this.setQuestionTitle(event)}
-            />
+            <div ref="title" className="title">
+                <input type="text" placeholder="请输入标题"
+                       value={this.props.title}
+                       onChange={(event) => this.setQuestionTitle(event)}/>
+            </div>
             <div className="option-action">
                 <button className="action"
                         onClick={() => this.props.addOption(this.props.questionId)}
@@ -36,10 +47,6 @@ class OptionsBar extends Component{
         </section>
     }
 
-    setQuestionTitle(e) {
-        let value = e.target.value;
-        this.props.setQuestionTitle(this.props.questionId, value);
-    }
 }
 
 module.exports = OptionsBar;

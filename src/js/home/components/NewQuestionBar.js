@@ -1,5 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 
+/**
+ * 问卷创建问题栏
+ */
+
 class NewQuestionBar extends Component {
     constructor(props, context) {
         super(props, context);

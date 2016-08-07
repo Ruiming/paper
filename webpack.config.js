@@ -8,7 +8,6 @@ module.exports = {
             './src/js/home/components/Header.js',
             './src/js/home/components/Option.js',
             './src/js/home/components/OptionsBar.js',
-            './src/js/home/components/Title.js',
         ],
         vendor: [
             'react',
@@ -42,7 +41,12 @@ module.exports = {
             /* chunkName= */"vendor",
             /* filename= */"vendor.bundle.js",
             Infinity),
-        new HotModuleReplacementPlugin()
+        new HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+        })
     ],
     devServer: {
         hot: true,

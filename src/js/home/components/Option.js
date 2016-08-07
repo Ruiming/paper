@@ -1,5 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 
+/**
+ * 选项栏
+ */
+
 class Option extends Component{
     render() {
         let type = this.props.type;

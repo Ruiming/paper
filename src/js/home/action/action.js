@@ -6,11 +6,6 @@ export const REMOVE_QUESTION = 'REMOVE_QUESTION';
 export const REMOVE_OPTION = 'REMOVE_OPTION';
 export const SET_OPTION_TITLE = 'SET_OPTION_TITLE';
 
-/**
- * action可以对传参进行筛选，可以避免不必要的参数传入
- * action返回一个plain object，必须包含type属性，然后reducer接收处理
- *
- */
 export function addQuestion(type) {
     return {
         type: ADD_QUESTION,
