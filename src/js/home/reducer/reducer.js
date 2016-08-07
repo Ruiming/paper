@@ -8,25 +8,20 @@ function questionsReducer(state=[], action) {
     _.extend(paper, state);
     switch(action.type) {
         case ADD_QUESTION:
-            return [
-                ...state,
-                {
-                    title: '',
-                    type: action.questionType,
-                    content: ['','','','']
-                }
-            ];
+            paper.push({
+                title: '',
+                type: action.questionType,
+                content: ['','','','']
+            });
+            return paper;
         case REMOVE_QUESTION:
-            return [
-                ...state.slice(0, action.questionId),
-                ...state.slice(action.questionId+1)
-            ];
+            return _.filter(paper, (value, index) => {
+                return index !== action.questionId;
+            });
         case MODIFY_QUESTION:
             _.map(action.options, (value, key)=>{
-                console.log(key, value);
                 paper[action.questionId][key] = value;
             });
-            console.log(paper);
             return paper;
         case ADD_OPTION:
         case REMOVE_OPTION:

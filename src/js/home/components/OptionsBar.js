@@ -51,7 +51,8 @@ class OptionsBar extends Component{
                     <div className="form-group">
                         <label htmlFor="number">限选:</label>
                         <input type="number" id="number" className="form-control"
-                               value={this.props.question.max}
+                               value={this.props.question.max || this.props.question.content.length}
+                               min="2"
                                max={this.props.question.content.length}
                                onChange={(event)=>this.modifyCheckboxMax(event)}
                         />
