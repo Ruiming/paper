@@ -47,14 +47,23 @@ class OptionsBar extends Component{
             </div>
             {(() => {
                 if(this.props.type === 'checkbox') {
-                return <div className="option-action btn-group-vertical col-xs-2">
-                    <div className="form-group">
-                        <label htmlFor="number">限选:</label>
+                return <div className="option-action form-horizontal col-xs-2">
+                    <div className="form-inline">
+                        <label htmlFor="number">最多选:&nbsp;&nbsp;</label>
                         <input type="number" id="number" className="form-control"
                                value={this.props.question.max || this.props.question.content.length}
                                min="2"
                                max={this.props.question.content.length}
-                               onChange={(event)=>this.modifyCheckboxMax(event)}
+                               onChange={(event, key)=>this.modifyCheckboxMax(event, 'max')}
+                        />
+                    </div>
+                    <div className="form-inline">
+                        <label htmlFor="number">至少选:&nbsp;&nbsp;</label>
+                        <input type="number" id="number" className="form-control"
+                               value={this.props.question.min || 2}
+                               min="2"
+                               max={this.props.question.content.length}
+                               onChange={(event, key)=>this.modifyCheckboxMax(event, 'min')}
                         />
                     </div>
                 </div>
@@ -63,8 +72,9 @@ class OptionsBar extends Component{
         </li>
     }
 
-    modifyCheckboxMax(event) {
-        let obj = {max: event.target.value};
+    modifyCheckboxMax(event, key) {
+        let obj = {};
+        obj[key] = event.target.value;
         this.props.modifyQuestion(this.props.questionId, obj);
     }
 
