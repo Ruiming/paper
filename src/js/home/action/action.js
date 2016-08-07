@@ -5,6 +5,15 @@ export const ADD_OPTION = 'ADD_OPTION';
 export const REMOVE_QUESTION = 'REMOVE_QUESTION';
 export const REMOVE_OPTION = 'REMOVE_OPTION';
 export const SET_OPTION_TITLE = 'SET_OPTION_TITLE';
+export const MODIFY_QUESTION = 'MODIFY_QUESTION';
+
+export function modifyQuestion(questionId, options) {
+    return {
+        type: MODIFY_QUESTION,
+        questionId: questionId,
+        options: options
+    }
+}
 
 export function addQuestion(type) {
     return {

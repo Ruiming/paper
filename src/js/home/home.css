@@ -1,4 +1,13 @@
 .paper {
-    padding: 10px 0;
+    padding: 10px 0 15px 0;
     overflow: hidden;
+}
+.question {
+    margin: 10px auto;
+}
+.option {
+    margin: 10px 0;
+}
+.option-action {
+    margin: 10px 0;
 }

@@ -17,7 +17,7 @@ class NewQuestionBar extends Component {
     }
 
     render() {
-        return  <div className="btn-group-vertical col-md-2">
+        return  <div className="btn-group-vertical col-md-2 question">
                 {this.state.type.map(function(type, i) {
                     return  <a href='javascript:;' className="btn btn-default" key={i}
                            onClick={() => this.props.addQuestion(type.text)} >

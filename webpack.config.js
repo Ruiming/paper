@@ -15,7 +15,8 @@ module.exports = {
             'redux',
             'react-redux',
             'jquery',
-            'bootstrap'
+            'bootstrap',
+            'underscore'
         ]
     },
     output: {

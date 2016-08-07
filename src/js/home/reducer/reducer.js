@@ -1,8 +1,11 @@
-import { ADD_QUESTION, ADD_OPTION, SET_PAPER_TITLE, SET_QUESTION_TITLE, SET_OPTION_TITLE,
+import { ADD_QUESTION, ADD_OPTION, SET_PAPER_TITLE, SET_QUESTION_TITLE, SET_OPTION_TITLE, MODIFY_QUESTION,
          REMOVE_OPTION, REMOVE_QUESTION } from '../action/action'
+import _ from 'underscore'
 import { combineReducers } from 'redux'
 
 function questionsReducer(state=[], action) {
+    let paper = [];
+    _.extend(paper, state);
     switch(action.type) {
         case ADD_QUESTION:
             return [
@@ -18,6 +21,13 @@ function questionsReducer(state=[], action) {
                 ...state.slice(0, action.questionId),
                 ...state.slice(action.questionId+1)
             ];
+        case MODIFY_QUESTION:
+            _.map(action.options, (value, key)=>{
+                console.log(key, value);
+                paper[action.questionId][key] = value;
+            });
+            console.log(paper);
+            return paper;
         case ADD_OPTION:
         case REMOVE_OPTION:
         case SET_QUESTION_TITLE:

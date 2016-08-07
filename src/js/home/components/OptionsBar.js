@@ -16,13 +16,13 @@ class OptionsBar extends Component{
             <div ref="title" className="title col-xs-12">
                 <input type="text" placeholder="请输入标题"
                        className="form-control"
-                       value={this.props.title}
+                       value={this.props.question.title}
                        onChange={(event) => this.setQuestionTitle(event)}/>
             </div>
             <div className="col-xs-10">
-                {this.props.content.map((st, j) => {
+                {this.props.question.content.map((st, j) => {
                     return <Option content={st}
-                                   type={this.props.type}
+                                   type={this.props.question.type}
                                    holder={`选项${j+1}`}
                                    checked={false}
                                    setOptionTitle={this.props.setOptionTitle}
@@ -40,17 +40,31 @@ class OptionsBar extends Component{
                     新增选项
                 </button>
                 <button className="btn btn-default"
-                        onClick={() => this.props.addOption(this.props.questionId, 'text')}
-                >
-                    新增填空
-                </button>
-                <button className="btn btn-default"
                         onClick={() => this.props.removeQuestion(this.props.questionId)}
                 >
                     删除问题
                 </button>
             </div>
+            {(() => {
+                if(this.props.type === 'checkbox') {
+                return <div className="option-action btn-group-vertical col-xs-2">
+                    <div className="form-group">
+                        <label htmlFor="number">限选:</label>
+                        <input type="number" id="number" className="form-control"
+                               value={this.props.question.max}
+                               max={this.props.question.content.length}
+                               onChange={(event)=>this.modifyCheckboxMax(event)}
+                        />
+                    </div>
+                </div>
+                }
+            })()}
         </li>
+    }
+
+    modifyCheckboxMax(event) {
+        let obj = {max: event.target.value};
+        this.props.modifyQuestion(this.props.questionId, obj);
     }
 
 }

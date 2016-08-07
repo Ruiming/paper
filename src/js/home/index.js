@@ -20,7 +20,8 @@ const initialState = {
     }, {
         title: '',
         type: 'checkbox',
-        content: ['','','','']
+        content: ['','','',''],
+        max: 2
     }]
 };
 

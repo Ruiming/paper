@@ -7,7 +7,7 @@ import React, { Component, PropTypes } from 'react'
 class Option extends Component{
     render() {
         let type = this.props.type;
-        return <div className="input-group">
+        return <div className="input-group option">
             <span className="input-group-addon">
                 <input type={type} checked={this.props.checked} />
             </span>
