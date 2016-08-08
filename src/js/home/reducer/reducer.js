@@ -47,7 +47,7 @@ function questionsReducer(state=[], action) {
                 options[action.optionId] = options[action.optionId + action.dir2];
                 options[action.optionId + action.dir2] = pre;
             } else {
-                let pre = _.extend(paper);
+                let pre = _.extend(paper[action.questionId]);
                 paper[action.questionId] = paper[action.questionId + action.dir1];
                 paper[action.questionId + action.dir1] = pre;
             }

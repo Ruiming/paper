@@ -8,6 +8,10 @@
 .option {
     margin: 10px 0;
 }
-.option-action {
+.question-manage {
+    padding: 0;
     margin: 10px 0;
+}
+.options {
+    padding: 0 15px 0 0;
 }

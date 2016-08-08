@@ -13,13 +13,21 @@ class Question extends Component{
 
     render() {
         return <li className="list-group-item row question">
-            <div ref="title" className="title col-xs-12">
+            <div ref="title" className="question-title input-group col-xs-12">
                 <input type="text" placeholder="请输入标题"
                        className="form-control"
                        value={this.props.question.title}
-                       onChange={(event) => this.setQuestionTitle(event)}/>
+                       onChange={(event) => this.setQuestionTitle(event)} />
+                <span className="input-group-btn">
+                            <button className="btn btn-default" type="button" disabled={this.props.questionId === 0} onClick={() => this.changeOrder(-1)}>
+                                <span className="glyphicon glyphicon-arrow-up" />
+                            </button>
+                            <button className="btn btn-default" type="button" disabled={this.props.questionId === this.props.count - 1} onClick={() => this.changeOrder(1)}>
+                                <span className="glyphicon glyphicon-arrow-down" />
+                            </button>
+                </span>
             </div>
-            <div className="col-xs-10">
+            <div className="options col-xs-10">
                 {this.props.question.content.map((st, j) => {
                     return <Option content={st}
                                    count={this.props.question.content.length}
@@ -35,15 +43,13 @@ class Question extends Component{
                                    key={j} />;
                 })}
             </div>
-            <div className="option-action btn-group-vertical col-xs-2">
+            <div className="question-manage btn-group-vertical col-xs-2">
                 <button className="btn btn-default"
-                        onClick={() => this.props.addOption(this.props.questionId)}
-                >
+                        onClick={() => this.props.addOption(this.props.questionId)}>
                     新增选项
                 </button>
                 <button className="btn btn-default"
-                        onClick={() => this.props.removeQuestion(this.props.questionId)}
-                >
+                        onClick={() => this.props.removeQuestion(this.props.questionId)}>
                     删除问题
                 </button>
             </div>
@@ -78,6 +84,10 @@ class Question extends Component{
         let obj = {};
         obj[key] = event.target.value;
         this.props.modifyQuestion(this.props.questionId, obj);
+    }
+
+    changeOrder(dir) {
+        this.props.changeOrder(this.props.questionId, dir);
     }
 
 }
