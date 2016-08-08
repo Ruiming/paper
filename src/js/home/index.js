@@ -16,12 +16,13 @@ const initialState = {
     questions: [{
         title: '',
         type: 'radio',
-        content: ['', '', '', '']
+        content: ['', '', '', ''],
+        fill: true
     }, {
         title: '',
         type: 'checkbox',
         content: ['','','',''],
-        max: 2
+        fill: true
     }]
 };
 

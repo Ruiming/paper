@@ -11,10 +11,10 @@ function questionsReducer(state=[], action) {
             switch(action.questionType) {
                 case 'radio':
                 case 'checkbox':
-                    paper.push({title: '', type: action.questionType, content: ['', '', '', '']});
+                    paper.push({title: '', type: action.questionType, content: ['', '', '', ''], fill: true});
                     return paper;
                 case 'textarea':
-                    paper.push({title: '', type: action.questionType, content: ['']});
+                    paper.push({title: '', type: action.questionType, content: [''], fill: true});
                     return paper;
                 default:
                     return paper;

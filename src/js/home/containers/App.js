@@ -25,7 +25,7 @@ class App extends Component {
                                                questionId={i}
                                                key={i}
                                                type={question.type}
-                                               count={question.length}
+                                               count={questions.length}
                                                changeOrder={(questionId, dir1, optionId, dir2) => dispatch(changeOrder(questionId, dir1, optionId, dir2))}
                                                setOptionTitle={(questionId, optionId, newTitle) => dispatch(setOptionTitle(questionId, optionId, newTitle))}
                                                setQuestionTitle={(questionId, newTitle) => dispatch(setQuestionTitle(questionId, newTitle))}
