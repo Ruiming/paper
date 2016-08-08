@@ -1,5 +1,5 @@
 import { ADD_QUESTION, ADD_OPTION, SET_PAPER_TITLE, SET_QUESTION_TITLE, SET_OPTION_TITLE, MODIFY_QUESTION,
-         REMOVE_OPTION, REMOVE_QUESTION } from '../action/action'
+         REMOVE_OPTION, REMOVE_QUESTION, CHANGE_ORDER} from '../action/action'
 import _ from 'underscore'
 import { combineReducers } from 'redux'
 
@@ -8,12 +8,17 @@ function questionsReducer(state=[], action) {
     _.extend(paper, state);
     switch(action.type) {
         case ADD_QUESTION:
-            paper.push({
-                title: '',
-                type: action.questionType,
-                content: ['','','','']
-            });
-            return paper;
+            switch(action.questionType) {
+                case 'radio':
+                case 'checkbox':
+                    paper.push({title: '', type: action.questionType, content: ['', '', '', '']});
+                    return paper;
+                case 'textarea':
+                    paper.push({title: '', type: action.questionType, content: ['']});
+                    return paper;
+                default:
+                    return paper;
+            }
         case REMOVE_QUESTION:
             return _.filter(paper, (value, index) => {
                 return index !== action.questionId;
@@ -35,6 +40,18 @@ function questionsReducer(state=[], action) {
                 questionReducer(state[action.questionId], action),
                 ...state.slice(action.questionId+1)
             ];
+        case CHANGE_ORDER:
+            if(action.dir2) {
+                let options = paper[action.questionId].content;
+                let pre = _.extend(options[action.optionId]);
+                options[action.optionId] = options[action.optionId + action.dir2];
+                options[action.optionId + action.dir2] = pre;
+            } else {
+                let pre = _.extend(paper);
+                paper[action.questionId] = paper[action.questionId + action.dir1];
+                paper[action.questionId + action.dir1] = pre;
+            }
+            return paper;
         default:
             return state;
     }

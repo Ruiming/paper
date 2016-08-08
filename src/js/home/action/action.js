@@ -6,6 +6,17 @@ export const REMOVE_QUESTION = 'REMOVE_QUESTION';
 export const REMOVE_OPTION = 'REMOVE_OPTION';
 export const SET_OPTION_TITLE = 'SET_OPTION_TITLE';
 export const MODIFY_QUESTION = 'MODIFY_QUESTION';
+export const CHANGE_ORDER = 'CHANGE_ORDER';
+
+export function changeOrder(questionId, dir1, optionId, dir2) {
+    return {
+        type: CHANGE_ORDER,
+        questionId: questionId,
+        dir1: dir1,
+        optionId: optionId,
+        dir2: dir2
+    }
+}
 
 export function modifyQuestion(questionId, options) {
     return {

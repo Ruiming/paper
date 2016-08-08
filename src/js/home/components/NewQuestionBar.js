@@ -11,7 +11,8 @@ class NewQuestionBar extends Component {
         this.state = {
             type: [
                 {text: 'radio', name: '单选题'},
-                {text: 'checkbox', name: '多选题', limit: 0},
+                {text: 'checkbox', name: '多选题'},
+                {text: 'textarea', name: '填空题'}
             ]
         };
     }
@@ -29,4 +30,4 @@ class NewQuestionBar extends Component {
 
 }
 
-module.exports = NewQuestionBar;
+export default NewQuestionBar

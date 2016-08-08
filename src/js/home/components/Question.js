@@ -4,7 +4,7 @@ import Option from './Option'
 /**
  * 题目栏
  */
-class OptionsBar extends Component{
+class Question extends Component{
 
     setQuestionTitle(e) {
         let value = e.target.value;
@@ -22,9 +22,11 @@ class OptionsBar extends Component{
             <div className="col-xs-10">
                 {this.props.question.content.map((st, j) => {
                     return <Option content={st}
+                                   count={this.props.question.content.length}
                                    type={this.props.question.type}
                                    holder={`选项${j+1}`}
                                    checked={false}
+                                   changeOrder={this.props.changeOrder}
                                    setOptionTitle={this.props.setOptionTitle}
                                    setQuestionTitle={this.props.setQuestionTitle}
                                    removeOption={this.props.removeOption}
@@ -80,4 +82,4 @@ class OptionsBar extends Component{
 
 }
 
-module.exports = OptionsBar;
+export default Question

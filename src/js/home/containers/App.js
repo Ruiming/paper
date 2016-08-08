@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { addQuestion, addOption, modifyQuestion, setPaperTitle, setQuestionTitle, setOptionTitle, removeQuestion, removeOption } from '../action/action'
+import { addQuestion, addOption, modifyQuestion, setPaperTitle,
+         setQuestionTitle, setOptionTitle, removeQuestion, removeOption,
+         changeOrder } from '../action/action'
 import Header from '../components/Header'
 import NewQuestionBar from '../components/NewQuestionBar'
 import Question from '../components/Question'
@@ -23,6 +25,7 @@ class App extends Component {
                                                questionId={i}
                                                key={i}
                                                type={question.type}
+                                               changeOrder={(questionId, dir1, optionId, dir2) => dispatch(changeOrder(questionId, dir1, optionId, dir2))}
                                                setOptionTitle={(questionId, optionId, newTitle) => dispatch(setOptionTitle(questionId, optionId, newTitle))}
                                                setQuestionTitle={(questionId, newTitle) => dispatch(setQuestionTitle(questionId, newTitle))}
                                                removeQuestion={(questionId) => dispatch(removeQuestion(questionId))}
